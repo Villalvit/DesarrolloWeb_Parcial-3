@@ -22,12 +22,12 @@
     </header>
 <div class="container">
     <form action="guardar_datos.php" method="POST">
-        <h2>Registro Medicos</h2><br>
-        <input type="text" name="Id" placeholder="Inserte ID" required><br>
-        <input type="text" name="Nombre" placeholder="Tu Nombre" required><br>
-        <input type="text" name="Especialidad" placeholder="Tu Apellido" required><br>
-        <input type="text" name="Telefono" placeholder=" Tu Telefono" required><br>
-        <input type="email" name="Correo" placeholder=" Tu Correo" required><br>
+        <h2>Registro Cita</h2><br>
+        <input type="text" name="id_cita" placeholder="Inserte ID" required><br>
+        <input type="text" name="id_paciente"placeholder="Id Del paciente" required><br>
+        <input type="text" name="medico_id" placeholder="Id Del medico" required><br>
+        <input type="text" name="Fecha" placeholder=" Fecha de la cita" required><br>
+        <input type="email" name="Motivo" placeholder="Motivo de la Cita" required><br>
         <button type="submit">Enviar</button><br>
     </form>
 </div>
