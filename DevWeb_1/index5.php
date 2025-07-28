@@ -21,15 +21,33 @@
     </nav>
     </header>
 <div class="container">
-    <form action="guardar_datos.php" method="POST">
+    <form action="" method="POST">
         <h2>Registro Pacientes</h2><br>
-        <input type="text" name="id_paciente" placeholder="Inserte ID" required><br>
-        <input type="text" name="Nombre" placeholder="Tu Nombre" required><br>
-        <input type="text" name="fehca_ nacimiento" placeholder="Tu Fecha de nacimiento" required><br>
+        <input type="text" name="nombre" placeholder="Tu Nombre" required><br>
+        <input type="date" name="fecha_nacimiento" placeholder="Tu Fecha de nacimiento" required><br>
         <input type="text" name="direccion" placeholder=" Tu direccion" required><br>
-        <input type="email" name="telefono" placeholder=" Tu Telefono" required><br>
+        <input type="text" placeholder="Tu Teléfono" required>
         <input type="email" name="correo" placeholder=" Tu Correo" required><br>
         <button type="submit">Enviar</button><br>
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    extract($_POST);
+
+    $conn = new mysqli('localhost', 'root', '', 'hospital');
+
+    // Make sure the column names in your 'pacientes' table match exactly
+    // e.g., nombre, fecha_nacimiento, direccion, telefono, correo
+    $conn->query("INSERT INTO pacientes (nombre, fecha_nacimiento, direccion, telefono, correo) 
+    VALUES ('$nombre', '$fecha_nacimiento', '$direccion', '$telefono', '$correo')");
+
+    echo "<p>Paciente registrado correctamente.</p>";
+    echo "<style>p { color: green; }</style>";
+    echo "<style>p { text-align: center; padding-top: 10px; }</style>";
+}
+
+?>
+
     </form>
 </div>
     <footer>

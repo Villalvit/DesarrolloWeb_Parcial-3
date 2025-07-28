@@ -8,7 +8,7 @@
 </head>
 <body> 
     <header>
-    <h1>Hospital</h1>
+    <h1>Hospital Militar</h1>
     <p>Diseño Web II - 12 BTP Informática</p>
         <nav>
         <ul>
@@ -21,10 +21,22 @@
     </nav>
     </header>
 <div class="container">
-    <form action="guardar_datos.php" method="POST">
+    <form action="" method="POST">
         <h2>Registro especialidades</h2><br>
         <input type="text" name="nombre_especialidad" placeholder="Nombre de la especialidad" required><br>
         <button type="submit">Enviar</button><br>
+        <?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $conn = new mysqli('localhost', 'root', '', 'hospital');
+    $nombre = $_POST['nombre_especialidad'];
+    $conn->query("INSERT INTO especialidades (nombre_especialidad) VALUES ('$nombre')");
+    // agregar el css para mostrar el mensaje historial médico registrado correctamente
+    echo "<style>p { color: green; }</style>";
+    echo "<p>Especialidad registrada correctamente.</p>";
+}
+
+?>
     </form>
 </div>
     <footer>
